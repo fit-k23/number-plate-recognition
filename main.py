@@ -1,13 +1,16 @@
 import os
+from typing import Any
+
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import tensorflow as tf
+from numpy import ndarray, dtype, signedinteger
+from numpy._typing import _32Bit
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import pytesseract as pt
 
-model = tf.keras.models.load_model(
-    '/Users/asik/Desktop/ANPR/object_detection.h5')
+model = tf.keras.models.load_model('/Users/asik/Desktop/ANPR/object_detection.h5')
 
 
 def object_detection(path, filename):
@@ -17,7 +20,7 @@ def object_detection(path, filename):
     image1 = load_img(path, target_size=(224, 224))
     # Data preprocessing
     # Convert into array and get the normalized output
-    image_arr_224 = img_to_array(image1)/255.0
+    image_arr_224 = img_to_array(image1) / 255.0
     h, w, d = image.shape
     test_arr = image_arr_224.reshape(1, 224, 224, 3)
     # Make predictions
@@ -25,11 +28,10 @@ def object_detection(path, filename):
     # Denormalize the values
     denorm = np.array([w, w, h, h])
     coords = coords * denorm
-    coords = coords.astype(np.int32)
     # Draw bounding on top the image
-    xmin, xmax, ymin, ymax = coords[0]
-    pt1 = (xmin, ymin)
-    pt2 = (xmax, ymax)
+    xMin, xMax, yMin, yMax = coords[0]
+    pt1 = (xMin, yMin)
+    pt2 = (xMax, yMax)
     print(pt1, pt2)
     cv2.rectangle(image, pt1, pt2, (0, 255, 0), 3)
     # Convert into bgr
@@ -64,7 +66,6 @@ def OCR(path, filename):
 
 
 def apply_brightness_contrast(input_img, brightness=0, contrast=0):
-
     if brightness != 0:
         if brightness > 0:
             shadow = brightness
@@ -72,7 +73,7 @@ def apply_brightness_contrast(input_img, brightness=0, contrast=0):
         else:
             shadow = 0
             highlight = 255 + brightness
-        alpha_b = (highlight - shadow)/255
+        alpha_b = (highlight - shadow) / 255
         gamma_b = shadow
 
         buf = cv2.addWeighted(input_img, alpha_b, input_img, 0, gamma_b)
@@ -80,9 +81,9 @@ def apply_brightness_contrast(input_img, brightness=0, contrast=0):
         buf = input_img.copy()
 
     if contrast != 0:
-        f = 131*(contrast + 127)/(127*(131-contrast))
+        f = 131 * (contrast + 127) / (127 * (131 - contrast))
         alpha_c = f
-        gamma_c = 127*(1-f)
+        gamma_c = 127 * (1 - f)
 
         buf = cv2.addWeighted(buf, alpha_c, buf, 0, gamma_c)
 
