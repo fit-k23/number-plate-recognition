@@ -1,0 +1,26 @@
+<annotation>
+	<folder/>
+	<filename>diploma-crop0.jpg</filename>
+	<path>../images/diploma-crop0.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>512</width>
+		<height>288</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diploma-plate</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>160</xmin>
+			<ymin>173</ymin>
+			<xmax>305</xmax>
+			<ymax>203</ymax>
+		</bndbox>
+	</object>
+</annotation>

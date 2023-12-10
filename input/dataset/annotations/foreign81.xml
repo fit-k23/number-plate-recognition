@@ -1,0 +1,26 @@
+<annotation>
+	<folder/>
+	<filename>foreign81.jpg</filename>
+	<path>../images/foreign81.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1023</width>
+		<height>682</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>plate</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>373</xmin>
+			<ymin>366</ymin>
+			<xmax>528</xmax>
+			<ymax>408</ymax>
+		</bndbox>
+	</object>
+</annotation>
