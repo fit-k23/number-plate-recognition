@@ -19,7 +19,7 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten, Input
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
 path = glob('images/*.xml')
-print(path)
+
 labels_dict = dict(filepath=[], xmin=[], xmax=[], ymin=[], ymax=[])
 for filename in path:
     info = xet.parse(filename)
@@ -46,11 +46,6 @@ def getImageFilename(filename):
     imageFilename = xet.parse(filename).getroot().find('filename').text
     imageFilename = os.path.join('images', imageFilename)
     return imageFilename
-
-
-# getFilename(df['filepath'][0])
-
-print(df['filepath'])
 
 image_path = list(df['filepath'].apply(getImageFilename))
 
@@ -118,3 +113,4 @@ history = model.fit(x=x_train, y=y_train, batch_size=10, epochs=180,
                     validation_data=(x_test, y_test), callbacks=[tfb])
 
 model.save('./my_model.keras')
+

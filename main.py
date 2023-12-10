@@ -10,9 +10,8 @@ from numpy._typing import _32Bit
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import pytesseract as pt
 
-model = tf.keras.models.load_model('/Users/asik/Desktop/ANPR/object_detection.h5')
-
-
+model = tf.keras.models.load_model('./my_model.keras')
+print("Loaded model")
 def object_detection(path, filename):
     # Read image
     image = load_img(path)  # PIL object
