@@ -1,26 +1,26 @@
 <annotation>
 	<folder/>
-	<filename>unknown10.jpg</filename>
-	<path>../images/unknown10.jpg</path>
+	<filename>business8.jpg</filename>
+	<path>../images/business8.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
 	<size>
-		<width>512</width>
-		<height>288</height>
+		<width>300</width>
+		<height>168</height>
 		<depth>3</depth>
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>plate</name>
+		<name>business-plate</name>
 		<pose>Unspecified</pose>
 		<truncated>1</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>288</xmin>
-			<ymin>198</ymin>
-			<xmax>499</xmax>
-			<ymax>288</ymax>
+			<xmin>1</xmin>
+			<ymin>1</ymin>
+			<xmax>295</xmax>
+			<ymax>161</ymax>
 		</bndbox>
 	</object>
 </annotation>

@@ -14,6 +14,18 @@ images['native'] = "voc_plate_dataset/JPEGImages"
 
 output = "dataset"
 
+def deleteFolderContents(folder_path):
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        try:
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+            elif os.path.isdir(file_path):
+                os.rmdir(file_path)
+        except Exception as e:
+            print(f"Error deleting {file_path}: {e}")
+    print("Deleted \"" + folder_path + "\"'s contents")
+
 def fixPath(path):
     return os.path.abspath(path).replace("\\", "/")
 
@@ -54,12 +66,14 @@ subgroups = {
     'rotatengoaigiao': 'diploma-rotate',
     'brightnessngoaigiao': 'diploma-brightness',
     'cropngoaigiao': 'diploma-crop',
+    'ngoaigiao': 'diploma',
     'boderquandoi': 'military-border',
     'brightnessquandoi': 'military-brightness',
     'cropquandoi': 'military-crop',
     'rotatequandoi': 'military-rotate',
     'quandoi': 'military',
     'kinhdoanh': 'business',
+    'kd': 'business',
     'CarLongPlate': 'citizen-long',
     'xemayBigPlate': 'citizen-big',
     'xemay': 'citizen-big',
@@ -71,6 +85,7 @@ groupName = {
     'diploma-rotate': 'diploma-plate',
     'diploma-brightness': 'diploma-plate',
     'diploma-crop': 'diploma-plate',
+    'diploma': 'diploma-plate',
     'military-border': 'military-plate',
     'military-rotate': 'military-plate',
     'military-brightness': 'military-plate',
@@ -89,6 +104,7 @@ amount = {
     'diploma-rotate': 10,
     'diploma-brightness': 10,
     'diploma-crop': 10,
+    'diploma': 10,
     'military-border': 10,
     'military-rotate': 10,
     'military-brightness': 10,
@@ -111,7 +127,7 @@ def countConstruct(dict):
 countAmount = countConstruct(amount)
 # print(countAmount)
 
-# if group type was set in here, they will be picked randomly
+# if group type was set in here, they will be picked randomly, not supported!
 random = [
     'citizen-big',
     'citizen-long',
@@ -120,7 +136,9 @@ random = [
 
 createDirectory(output)
 createDirectory(output + "/annotations")
+deleteFolderContents(output + "/annotations")
 createDirectory(output + "/images")
+deleteFolderContents(output + "/images")
 
 def getGroupType(name, file):
     if name == "foreign":
@@ -177,13 +195,16 @@ for name, annotation in annotations.items():
                 if not fileExists(realfilepath):
                     continue
         destination = output + "/images/" + grouptype + str(typeAmount) + ".jpg"
+        if grouptype == "unknown":
+            print("Unknown file: " + file)
+            continue
         if not fileExists(destination):
             copyFile(realfilepath, destination)
         root.find("filename").text = grouptype + str(typeAmount) + ".jpg"
         root.find("path").text = "../" + "images/" + grouptype + str(typeAmount) + ".jpg"
         member_object2 = root.findall("object")
         if len(member_object2) > 1:
-            print (file + " -> " + grouptype + str(typeAmount) + " has more than one object")
+            print ("Multiple objects case: " + file + " -> " + grouptype + str(typeAmount))
         for member in member_object2:
             member.find('name').text = getGroupName(grouptype)
         tree = etree.ElementTree(root)

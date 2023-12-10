@@ -1,7 +1,7 @@
 <annotation>
 	<folder/>
-	<filename>unknown7.jpg</filename>
-	<path>../images/unknown7.jpg</path>
+	<filename>business7.jpg</filename>
+	<path>../images/business7.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
@@ -12,7 +12,7 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>plate</name>
+		<name>business-plate</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -24,7 +24,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>plate</name>
+		<name>business-plate</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -36,7 +36,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>plate</name>
+		<name>business-plate</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -48,7 +48,7 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>plate</name>
+		<name>business-plate</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
