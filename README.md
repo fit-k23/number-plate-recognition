@@ -3,6 +3,10 @@ NUMBER PLATE RECOGNITION
 
 Nhận diện biển số xe!
 
+Dataset và file train: https://drive.google.com/drive/folders/1O4CsL55yQUSPxQ3WLIGMVSwwyAGg5hQr
+
+Video test: [tests](https://youtube.com/playlist?list=PL4MjhHHEFRBasa2vnYE1hZkhT0K4QbM1Z&si=BdJC-5SCD175M7lp)
+
 |          Model | Decs                                                                                                                                                                                            | Link                                                                                                  |
 |---------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------|
 | original.keras | train với dataset ban đầu, chỉ có biển số nước ngoài (0.8)                                                                                                                                      | [orinal.keras](https://drive.google.com/file/d/1-7e7GBqK3dDImv-mTPM8il149fE6CfIn/view?usp=drive_link) |
