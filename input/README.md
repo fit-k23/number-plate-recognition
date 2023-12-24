@@ -1,0 +1,1 @@
+Mã dùng để phân loại dataset thành tên của nó, hiện tại nó hardcoded tất cả về plate

@@ -6,11 +6,11 @@ from lxml import etree
 
 annotations = dict()
 annotations['foreign'] = "images-20231210T151305Z-001/images"
-annotations['native'] = "voc_plate_dataset/Annotations"
+#annotations['native'] = "voc_plate_dataset/Annotations"
 
 images = dict()
 images['foreign'] = "images-20231210T151305Z-001/images"
-images['native'] = "voc_plate_dataset/JPEGImages"
+#images['native'] = "voc_plate_dataset/JPEGImages"
 
 output = "dataset"
 
@@ -112,8 +112,8 @@ amount = {
     'military': 10,
     'government': 10,
     'business': 20,
-    'citizen-big': 250,
-    'citizen-long': 200,
+    'citizen-big': 1000,
+    'citizen-long': 1000,
     'foreign': 200,
     'unknown': 10
 }
@@ -206,7 +206,8 @@ for name, annotation in annotations.items():
         if len(member_object2) > 1:
             print ("Multiple objects case: " + file + " -> " + grouptype + str(typeAmount))
         for member in member_object2:
-            member.find('name').text = getGroupName(grouptype)
+            # member.find('name').text = getGroupName(grouptype)
+            member.find('name').text = "plate"
         tree = etree.ElementTree(root)
         addGroupTypeCount(grouptype)
         total += 1
